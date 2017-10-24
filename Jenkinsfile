@@ -1,5 +1,6 @@
 pipeline {
   agent 'any'
+  checkout scm
   stages {
     stage('CodeCommit') {
       steps {
