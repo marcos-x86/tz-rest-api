@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('CodeCommit') {
       steps {
-        checkout scm
         sh './gradlew clean assemble'
       }
     }
