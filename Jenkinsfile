@@ -23,6 +23,7 @@ pipeline {
       steps {
         sh './gradlew shadowJar'
         archiveArtifacts 'build/libs/*.jar'
+        archiveArtifacts 'example.yml'
       }
     }
   }
