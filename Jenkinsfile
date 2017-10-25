@@ -19,6 +19,11 @@ pipeline {
         ]
       }
     }
+    stage('CodeQuality') {
+      steps {
+        sh './gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000'
+      }
+    }
     stage('Package') {
       steps {
         sh './gradlew shadowJar'
