@@ -19,6 +19,20 @@ pipeline {
         ]
       }
     }
+    stage('CodeQuality') {
+      steps {
+        sh './gradlew sonarqube -Dsonar.host.url=http://sonarqube:9000'
+        sh './gradlew jacocoTestReport'
+        publishHTML target: [
+          allowMissing: false,
+          alwaysLinkToLastBuild: false,
+          keepAll: true,
+          reportDir: 'build/jacocoHtml/',
+          reportFiles: 'index.html',
+          reportName: 'Code Coverage Report'
+        ]
+      }
+    }
     stage('Package') {
       steps {
         sh './gradlew shadowJar'
