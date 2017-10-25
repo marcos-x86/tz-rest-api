@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh './gradlew check'
+        sh './gradlew clean check'
         publishHTML target: [
           allowMissing: false,
           alwaysLinkToLastBuild: false,
